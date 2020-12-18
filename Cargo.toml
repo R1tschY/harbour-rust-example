@@ -1,0 +1,18 @@
+[package]
+name = "harbour-rust-example"
+version = "0.1.0"
+authors = ["Richard Liebscher <r1tschy@posteo.de>"]
+description = "A example for a Rust application for Sailfish OS"
+license = "GPL-3.0-or-later"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+qt5qml = { git = "https://github.com/R1tschY/qobject-rs.git", rev = "e537ce91" }
+sailfishapp = { path = "sailfishapp" }
+
+[build-dependencies]
+qobject-compiler = { git = "https://github.com/R1tschY/qobject-rs.git", rev = "e537ce91"}
+qt5qml = { git = "https://github.com/R1tschY/qobject-rs.git", rev = "e537ce91"}
+pkg-config = "0.3"
