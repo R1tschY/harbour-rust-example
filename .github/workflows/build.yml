@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  RELEASE: 3.4.0.24
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Prepare
+      run: chmod -R a+rw .
+
+    - uses: actions/cache@v2
+      with:
+        path: target
+        key: target-armv7hl-0
+
+    - name: Build armv7hl
+      run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
+            cd /home/nemo/project && mb2 -X -t SailfishOS-$RELEASE-armv7hl build -d -j1"
+
+    - name: Upload build result
+      uses: actions/upload-artifact@v2
+      with:
+        name: rpm-armv7hl
+        path: RPMS
+
+    - name: Check
+      run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
+            cd /home/nemo/project && mb2 -X -t SailfishOS-$RELEASE-i486 check"
