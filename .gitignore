@@ -2,13 +2,12 @@
 /RPMS
 /installroot
 /rpmbuildroot
-/.cargo*
 
 *.list
 
 # Qt Creator
 *.autosave
-*.user
+*.user*
 
 # IDEA
 /.idea

@@ -27,7 +27,7 @@ A example for a Rust application for Sailfish OS.
 %build
 
 export RPM_VERSION=%{version}
-export RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -Ccodegen-units=1"
+export RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -Ccodegen-units=1 -Clink-args=-Wl,--dynamic-list=%{_sourcedir}/../symbols.config"
 
 # release
 export CARGO_INCREMENTAL=0
@@ -38,6 +38,8 @@ touch Makefile
 
 # debug
 #cargo build -j1 --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
+
+nm target/release/%{name} | grep main
 
 # - INSTALL --------------------------------------------------------------------
 %install
