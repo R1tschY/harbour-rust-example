@@ -4,4 +4,7 @@ TARGET = harbour-rust-example
 
 CONFIG += sailfishapp
 
-DISTFILES += qml/*.qml
+DISTFILES += qml/*.qml \
+    *.md \
+    src/*.rs *.rs *.toml \
+    rpm/*.spec
