@@ -31,13 +31,13 @@ export RUSTFLAGS="-Clink-arg=-Wl,-z,relro,-z,now -Ccodegen-units=1 -Clink-arg=-r
 
 # release
 export CARGO_INCREMENTAL=0
-cargo build -j1 --release --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
+cargo build --release --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
 
 # Make build with Qt Creator work
 touch Makefile
 
 # debug
-#cargo build -j1 --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
+#cargo build --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
 
 # check that main symbol exists
 nm -D target/release/%{name} | grep main
