@@ -18,10 +18,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
-      with:
-        path: target
-        key: target-armv7hl-0
+    #- uses: actions/cache@v2
+    #  with:
+    #    path: target
+    #    key: target-armv7hl-0
 
     - name: Prepare
       run: chmod -R a+rw . && chmod -R a+rwx target
