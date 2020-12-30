@@ -10,10 +10,6 @@ The project contains a QtCreator dummy project so it can be imported to QtCreato
     sfdk deploy
 
 
-# Missing features
-
-* `booster` is not used for faster startup
-
 # Known issues
 
 * does not compile on i486 (Sailfish SDK seems to not support this platform for Rust)
