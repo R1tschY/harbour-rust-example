@@ -36,6 +36,6 @@ jobs:
         name: rpm-armv7hl
         path: RPMS
 
-    - name: Check
-      run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
-            cd /home/nemo/project && mb2 -X -t SailfishOS-$RELEASE-i486 check"
+    #- name: Check
+    #  run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
+    #        cd /home/nemo/project && mb2 -X -t SailfishOS-$RELEASE-i486 check"
