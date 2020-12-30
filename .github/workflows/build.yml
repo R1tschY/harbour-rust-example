@@ -18,13 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Prepare
-      run: chmod -R a+rw .
-
     - uses: actions/cache@v2
       with:
         path: target
         key: target-armv7hl-0
+
+    - name: Prepare
+      run: chmod -R a+rw .
 
     - name: Build armv7hl
       run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
