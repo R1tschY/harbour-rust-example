@@ -24,7 +24,7 @@ jobs:
         key: target-armv7hl-0
 
     - name: Prepare
-      run: chmod -R a+rw .
+      run: chmod -R a+rw . && chmod -R a+rwx target
 
     - name: Build armv7hl
       run: docker run --rm --privileged -v $PWD:/home/nemo/project coderus/sailfishos-platform-sdk:$RELEASE /bin/bash -c "
