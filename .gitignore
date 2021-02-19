@@ -2,6 +2,7 @@
 /RPMS
 /installroot
 /rpmbuildroot
+*~
 
 *.list
 

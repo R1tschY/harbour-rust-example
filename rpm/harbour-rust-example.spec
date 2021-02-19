@@ -39,9 +39,6 @@ touch Makefile
 # debug
 #cargo build --target-dir=target --locked --manifest-path %{_sourcedir}/../Cargo.toml
 
-# check that main symbol exists
-nm -D target/release/%{name} | grep main
-
 # - INSTALL --------------------------------------------------------------------
 %install
 
@@ -57,6 +54,18 @@ cp -r %{_sourcedir}/../qml %{buildroot}%{_datadir}/%{name}/qml
 desktop-file-install --delete-original       \
   --dir %{buildroot}%{_datadir}/applications             \
    %{buildroot}%{_datadir}/applications/*.desktop
+   
+# - CHECK ----------------------------------------------------------------------
+%check
+
+# check that main symbol exists
+if nm -D target/release/%{name} | grep "T main$" > /dev/null ; then
+  echo "main symbol exists"
+else
+  echo "main symbol is missing"
+  exit 1
+fi
+
 
 # - FILES ----------------------------------------------------------------------
 %files
